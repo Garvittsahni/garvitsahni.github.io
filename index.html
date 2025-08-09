@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Garvit Sahni — Photographer | Portfolio</title>
+  <meta name="description" content="Garvit Sahni — Toronto-based photographer. Weddings, events, product, and landscape photography.">
+  <meta name="keywords" content="photography, wedding photographer, product photography, event photographer, Toronto photographer">
+  <style>
+    /* --- Simple, elegant portfolio styles (single-file site) --- */
+    :root{--bg:#ffffff;--text:#07101a;--muted:#6b7280;--accent:#0b7285;--max:1180px}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial;margin:0;color:var(--text);background:linear-gradient(180deg,#fff,#fbfdff)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:8px 0}
+    .brand{display:flex;gap:.8rem;align-items:center}
+    .brand h1{margin:0;font-size:1.2rem}
+    nav a{margin-left:1rem;color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:#fff;padding:.5rem .8rem;border-radius:8px;text-decoration:none}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:1rem;align-items:center;padding:18px 0}
+    .hero h2{font-size:2rem;margin:0}
+    .hero p{color:var(--muted);line-height:1.5}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .thumb{position:relative;overflow:hidden;border-radius:10px;background:#f6f8fb}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+    .thumb:hover img{transform:scale(1.06)}
+    .thumb .caption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,0.5);color:#fff;padding:6px 8px;border-radius:6px;font-size:.9rem}
+
+    .section{padding:28px 0}
+    .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(11,18,32,0.04)}
+    footer{padding:28px 0;color:var(--muted);font-size:.9rem}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.8);z-index:60}
+    .lightbox img{max-width:92%;max-height:86%;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+    .lightbox .close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.07);color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+
+    /* Responsive */
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.hero aside{order:2}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#0b7285"/><path d="M6.5 12c1.6-3 8-3 9.5 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <h1>Garvit Sahni</h1>
+          <div style="color:var(--muted);font-size:.85rem">Toronto-based Photographer — Weddings • Events • Product • Travel</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#home" onclick="navigate(event,'home')">Home</a>
+        <a href="#galleries" onclick="navigate(event,'galleries')">Galleries</a>
+        <a href="#about" onclick="navigate(event,'about')">About</a>
+        <a href="#contact" onclick="navigate(event,'contact')">Contact</a>
+        <a class="cta" href="#contact" onclick="navigate(event,'contact')">Book a Session</a>
+      </nav>
+    </header>
+
+    <!-- HOME -->
+    <main id="home" class="page">
+      <section class="hero">
+        <div>
+          <h2>Photography that tells a story</h2>
+          <p>I capture authentic moments and craft beautiful, timeless images — whether it’s a wedding, an event, a brand shoot, or a travel story. Based in Toronto and available for travel.</p>
+          <div style="margin-top:12px"><a class="cta" href="#contact" onclick="navigate(event,'contact')">Book a Session</a></div>
+
+          <div style="margin-top:18px">
+            <h4>Featured work</h4>
+            <div class="grid" id="featuredGrid">
+              <!-- Thumbnails loaded below. Replace image URLs with your exported images. -->
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3>Portfolio (live)</h3>
+          <p style="color:var(--muted)">This site can embed your Format portfolio for full galleries. Or, export your images and host them here for a faster, SEO-friendly site.</p>
+          <p style="color:var(--muted)"><a href="https://garvittsahni.format.com/" target="_blank">Open Format portfolio</a></p>
+        </aside>
+      </section>
+    </main>
+
+    <!-- GALLERIES -->
+    <section id="galleries" class="page section" style="display:none">
+      <h2>Galleries</h2>
+      <p style="color:var(--muted)">Click any thumbnail to view larger. To host images here, export them from Format and replace the placeholder URLs in the code.</p>
+
+      <div class="grid" id="galleryGrid">
+        <!-- Gallery thumbnails inserted by JS -->
+      </div>
+
+      <div style="margin-top:14px;color:var(--muted)">
+        <strong>Want to host images here?</strong> Export your images (JPEG, web-optimized) and upload them to the site folder (or a CDN). Then update the <code>images</code> array in the script at the bottom of this file. If you'd like, I can prepare a ZIP with example images and ready-to-publish files.
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="page section" style="display:none">
+      <h2>About me</h2>
+      <p style="color:var(--muted)">Hi — I’m Garvit. I’ve spent years shooting weddings, events, and products, with a focus on natural light, candid emotion, and crisp commercial imagery. My approach is friendly, fast, and professional. I travel for work and love capturing stories that feel real.</p>
+
+      <div style="margin-top:18px;display:grid;grid-template-columns:1fr 320px;gap:12px">
+        <div class="card">
+          <h3>Services & Pricing</h3>
+          <ul style="color:var(--muted)">
+            <li><strong>Weddings:</strong> Full-day coverage, second shooter available — starting at $1,200.</li>
+            <li><strong>Events:</strong> Hourly coverage for corporate & private events.</li>
+            <li><strong>Product:</strong> E-commerce and lifestyle product shoots — per product or package.</li>
+            <li><strong>Travel / Landscape:</strong> Editorial and commissioned travel photography.</li>
+          </ul>
+          <p style="color:var(--muted)">(These are placeholders — send your exact prices and I’ll update.)</p>
+        </div>
+        <aside class="card">
+          <h3>Gear</h3>
+          <p style="color:var(--muted)">Canon / Nikon / Sony setups (example). I bring my own lighting and camera equipment for studio and product shoots.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page section" style="display:none">
+      <h2>Contact & Booking</h2>
+      <p style="color:var(--muted)">Tell me about your project — date, location, and what kind of shoot. I’ll reply with availability and a quote.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:12px">
+        <div>
+          <form id="contactForm" onsubmit="handleForm(event)">
+            <input id="name" placeholder="Full name" required style="width:100%;padding:.8rem;border-radius:8px;border:1px solid #e6e9ef;margin-bottom:8px">
+            <input id="email" type="email" placeholder="Email address" required style="width:100%;padding:.8rem;border-radius:8px;border:1px solid #e6e9ef;margin-bottom:8px">
+            <input id="date" type="text" placeholder="Event date (optional)" style="width:100%;padding:.8rem;border-radius:8px;border:1px solid #e6e9ef;margin-bottom:8px">
+            <textarea id="message" rows="6" placeholder="Tell me about your shoot" style="width:100%;padding:.8rem;border-radius:8px;border:1px solid #e6e9ef;margin-bottom:8px"></textarea>
+            <button class="cta" type="submit">Send message</button>
+          </form>
+        </div>
+        <aside class="card">
+          <h3>Quick info</h3>
+          <p style="color:var(--muted)"><strong>Email:</strong> hello@garvittsahni.com</p>
+          <p style="color:var(--muted)"><strong>Based:</strong> Toronto, Canada</p>
+          <p style="color:var(--muted)">Social: <a href="https://instagram.com/" target="_blank">Instagram</a> • <a href="https://www.facebook.com/" target="_blank">Facebook</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div>© <span id="year"></span> Garvit Sahni</div>
+        <div style="color:var(--muted)">Made with ❤️ — Exported from Format • <a href="#" onclick="navigate(event,'galleries')">View galleries</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="hideLightbox()">
+    <button class="close" onclick="hideLightbox();event.stopPropagation()">Close ✕</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <script>
+    // --- Simple single-file SPA navigation ---
+    function navigate(e,page){ if(e) e.preventDefault(); document.querySelectorAll('.page').forEach(p=>p.style.display='none'); document.getElementById(page).style.display='block'; window.scrollTo(0,0); }
+    // Start on home
+    document.addEventListener('DOMContentLoaded',()=>{ navigate(null,'home'); document.getElementById('year').textContent = new Date().getFullYear(); initGallery(); initFeatured(); });
+
+    // --- Replace these with your exported image filenames or CDN URLs ---
+    const images = [
+      {src:'images/wedding1.jpg', alt:'Wedding couple portrait', cat:'Weddings'},
+      {src:'images/event1.jpg', alt:'Event candid', cat:'Events'},
+      {src:'images/product1.jpg', alt:'Product closeup', cat:'Product'},
+      {src:'images/landscape1.jpg', alt:'Landscape scene', cat:'Travel'},
+      {src:'images/wedding2.jpg', alt:'Wedding ceremony', cat:'Weddings'},
+      {src:'images/event2.jpg', alt:'Event crowd', cat:'Events'},
+      {src:'images/product2.jpg', alt:'Product table shot', cat:'Product'},
+      {src:'images/landscape2.jpg', alt:'Mountain landscape', cat:'Travel'}
+    ];
+
+    function initFeatured(){ const f = document.getElementById('featuredGrid'); for(let i=0;i<4;i++){ const img = images[i]; const div = document.createElement('div'); div.className='thumb'; div.innerHTML = `<img loading="lazy" src="${img.src}" alt="${img.alt}" onerror="this.style.opacity=.4;this.nextElementSibling.style.display='block'" onclick="openLightbox('${img.src}')"><div class='caption'>${img.cat}</div>`; f.appendChild(div);} }
+
+    function initGallery(){ const g = document.getElementById('galleryGrid'); images.forEach((img,idx)=>{ const d = document.createElement('div'); d.className='thumb'; d.innerHTML = `<img loading="lazy" src="${img.src}" alt="${img.alt}" onclick="openLightbox('${img.src}')"><div class='caption'>${img.cat}</div>`; g.appendChild(d); }); }
+
+    function openLightbox(src){ const lb = document.getElementById('lightbox'); const im = document.getElementById('lightboxImg'); im.src = src; lb.style.display='flex'; }
+    function hideLightbox(){ const lb = document.getElementById('lightbox'); lb.style.display='none'; document.getElementById('lightboxImg').src=''; }
+
+    // Simple mailto form fallback (no backend)
+    function handleForm(e){ e.preventDefault(); const name=document.getElementById('name').value; const email=document.getElementById('email').value; const date=document.getElementById('date').value; const message=document.getElementById('message').value; const subject=encodeURIComponent('Booking request from '+name); const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nDate: '+date+'\n\nMessage:\n'+message); window.location.href='mailto:hello@garvittsahni.com?subject='+subject+'&body='+body; }
+
+  </script>
+
+
